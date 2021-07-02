@@ -1,1 +1,2 @@
-xingamentos = ['porra','caralho','fdp','pqp','caralho','vsf','corno','chupa','pau','cu','puta']
+xingamentos = []
+#PUT THE WORDS THAT NEED FILTER INSIDE THE BRACKETS
