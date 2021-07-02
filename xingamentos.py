@@ -1,0 +1,1 @@
+xingamentos = ['porra','caralho','fdp','pqp','caralho','vsf','corno','chupa','pau','cu','puta']
