@@ -42,6 +42,13 @@ async def matheus(ctx):
   await ctx.channel.send('O Github é : https://github.com/MatheusReimer')
   await ctx.channel.send('O Linkedin é : https://www.linkedin.com/in/matheus-reimer-636b10187/')
 
+
+#To promote myself
+@client.command()
+async def comandos(ctx):
+  await ctx.channel.send('!matheus\n''!hello\n' '!define lol\n')
+
+
 @client.command()
 async def define(ctx, word):
 
@@ -50,7 +57,21 @@ async def define(ctx, word):
   return
 
 
-##API SETUP
+@client.command()
+async def warzone(ctx):
+
+  info = warzoneData()
+  await ctx.send("Meu total de vitórias é: "+str(info['br']['wins']))
+  await ctx.send("Meu total de  baixas é:"+ str(info['br']['kills']))
+  await ctx.send("Meu kd é:"+str(info['br']['kdRatio']))
+  await ctx.send("Meu total de derrubados é:  "+str(info['br']['downs']))
+  await ctx.send("Meu total de mortes é:"+str(info['br']['deaths']))
+  await ctx.send("Meu total de jogos jogados é: "+str(info['br']['gamesPlayed']))
+  await ctx.send("Minha pontuação por minuto é:  "+str(info['br']['scorePerMinute']))
+  await ctx.send("Meu total de revives é:  "+str(info['br']['revives']))
+  
+  return
+##API SETUP DICTIONARY
 
 def dictionary(word):
 
@@ -69,6 +90,22 @@ def dictionary(word):
   definition = (json_data['list'][0]['definition'])
   return definition
 
+#API WARZONE
+def warzoneData():
+
+  url = "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/BattimaFernardes/psn"
+
+  headers = {
+      'x-rapidapi-key': "509436ea92msh7b7f6e62acc3695p142991jsn49c856f1b7a6",
+      'x-rapidapi-host': "call-of-duty-modern-warfare.p.rapidapi.com"
+      }
+
+  response = requests.request("GET", url, headers=headers)
+  json_data = json.loads(response.text)
+
+
+ 
+  return json_data
   
 
 client.run(my_secret)
